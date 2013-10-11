@@ -13,10 +13,8 @@ Assumptions
 Notes
 ================
 - for debug mode, append query string 'debug=true' to the URL
-- Made the decision to always wait 5.1 seconds before calling the server again to avoid any issues with the too many requests piece. I don't feel this is a cop out because in the real world the weather system would not update that frequently. The place where this causes pain is on load, however.
 
 Possible Improvements
 ================
 - better handling of polling: instead of always waiting the 'safe' amount of time, listen and handle too many request errors from the server, to reduce wait time. This would be especially important on the first run, as sometimes the server will be super mean and not return a proper response for some time.
 - push updates (would require server modifications)
-- Unit test cases
