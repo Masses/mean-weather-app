@@ -54,13 +54,13 @@ $(document).ready(function()
             if (typeof data === 'string')
             {
                 parsedJSON = JSON.parse(data);
-                temperature = parsedJSON.Temperature;
-                conditions = parsedJSON.Conditions;
+                temperature = escape(parsedJSON.Temperature);
+                conditions = escape(parsedJSON.Conditions);
             }
             else
             {
-                temperature = data.Temperature;
-                conditions = data.Conditions;
+                temperature = escape(data.Temperature);
+                conditions = escape(data.Conditions);
             }
 
 
@@ -224,9 +224,9 @@ $(document).ready(function()
             test("Check good responses", function() 
             {
                 /** check for real weather conditions **/
-                deepEqual(meanWeather.parseWeather('{"Temperature":-62,"Conditions":"foggy"}'), [-62, 'img/weather-icons/weather-foggy.png']);
-                deepEqual(meanWeather.parseWeather('{"Temperature":62,"Conditions":"sunny"}'), [62, 'img/weather-icons/weather-sunny.png']);
-                deepEqual(meanWeather.parseWeather('{"Temperature":0,"Conditions":"cloudy"}'), [0, 'img/weather-icons/weather-cloudy.png']);
+                deepEqual(meanWeather.parseWeather('{"Temperature":-62,"Conditions":"foggy"}'), ["-62", 'img/weather-icons/weather-foggy.png']);
+                deepEqual(meanWeather.parseWeather('{"Temperature":62,"Conditions":"sunny"}'), ["62", 'img/weather-icons/weather-sunny.png']);
+                deepEqual(meanWeather.parseWeather('{"Temperature":0,"Conditions":"cloudy"}'), ["0", 'img/weather-icons/weather-cloudy.png']);
             });
 
             test("Check JavaScript injection", function()
