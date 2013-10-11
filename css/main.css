@@ -16,6 +16,11 @@
 	text-align: center;
 }
 
+#qunit, #qunit-fixture
+{
+	display: none;
+}
+
 
 
 
